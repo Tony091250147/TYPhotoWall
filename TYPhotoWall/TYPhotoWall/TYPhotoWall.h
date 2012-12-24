@@ -23,6 +23,7 @@
 @interface TYPhotoWall : UIView <TYPhotoDelegate>
 
 @property (assign, nonatomic) id<TYPhotoWallDelegate> delegate;
+@property (strong, nonatomic) NSMutableArray *arrayPhotos;
 
 - (void)setPhotos:(NSArray*)photos;
 - (void)setEditMode:(BOOL)canEdit;

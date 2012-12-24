@@ -129,7 +129,7 @@
 #pragma mark - gesture handler
 - (void)tapPress:(UITapGestureRecognizer*)tapGesture
 {
-    NSLog(@"Tap Press");
+//    NSLog(@"Tap Press");
     if (tapGesture.state == UIGestureRecognizerStateEnded) {
         CGPoint inDelete = [tapGesture locationInView:self.delete];
         if ([self judgePointInDelete:inDelete]) {

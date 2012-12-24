@@ -12,7 +12,6 @@
 #import "TYPhotoSize.h"
 @interface TYPhotoWall() 
 
-@property (strong, nonatomic) NSMutableArray *arrayPhotos;
 @property (nonatomic) BOOL isEditMode;
 
 @end
