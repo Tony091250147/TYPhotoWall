@@ -22,6 +22,9 @@
 		1813C96F1687FE9B00E5118C /* TYPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 1813C96E1687FE9B00E5118C /* TYPhoto.m */; };
 		1813C98C1688099400E5118C /* ty_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 1813C98B1688099400E5118C /* ty_delete.png */; };
 		1813C98F1688101E00E5118C /* TYPhotoWall.m in Sources */ = {isa = PBXBuildFile; fileRef = 1813C98E1688101E00E5118C /* TYPhotoWall.m */; };
+		1813C9941688359700E5118C /* cat1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1813C9911688359700E5118C /* cat1.jpg */; };
+		1813C9951688359700E5118C /* cat2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1813C9921688359700E5118C /* cat2.jpg */; };
+		1813C9961688359700E5118C /* cat3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1813C9931688359700E5118C /* cat3.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,9 @@
 		1813C98D1688101E00E5118C /* TYPhotoWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPhotoWall.h; sourceTree = "<group>"; };
 		1813C98E1688101E00E5118C /* TYPhotoWall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPhotoWall.m; sourceTree = "<group>"; };
 		1813C990168815FB00E5118C /* TYPhotoSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYPhotoSize.h; sourceTree = "<group>"; };
+		1813C9911688359700E5118C /* cat1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat1.jpg; sourceTree = "<group>"; };
+		1813C9921688359700E5118C /* cat2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat2.jpg; sourceTree = "<group>"; };
+		1813C9931688359700E5118C /* cat3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat3.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +129,9 @@
 		1813C9691687FE6500E5118C /* images */ = {
 			isa = PBXGroup;
 			children = (
+				1813C9911688359700E5118C /* cat1.jpg */,
+				1813C9921688359700E5118C /* cat2.jpg */,
+				1813C9931688359700E5118C /* cat3.jpg */,
 				1813C98B1688099400E5118C /* ty_delete.png */,
 				1813C96A1687FE6500E5118C /* ty_addPhoto@2x.png */,
 			);
@@ -200,6 +209,9 @@
 				1813C9631687FDE900E5118C /* TYViewController.xib in Resources */,
 				1813C96B1687FE6500E5118C /* ty_addPhoto@2x.png in Resources */,
 				1813C98C1688099400E5118C /* ty_delete.png in Resources */,
+				1813C9941688359700E5118C /* cat1.jpg in Resources */,
+				1813C9951688359700E5118C /* cat2.jpg in Resources */,
+				1813C9961688359700E5118C /* cat3.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

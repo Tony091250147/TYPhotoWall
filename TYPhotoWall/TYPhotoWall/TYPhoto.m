@@ -43,10 +43,11 @@
         self.viewMask.layer.masksToBounds = YES;
         
         self.delete = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.delete.frame = CGRectMake(self.bounds.size.width-10, -5, kDeleteSize, kDeleteSize);
+        self.delete.frame = CGRectMake(self.bounds.size.width-15, -5, kDeleteSize, kDeleteSize);
         [self.delete setImage:[UIImage imageNamed:@"ty_delete.png"] forState:UIControlStateNormal];
         self.delete.backgroundColor = [UIColor clearColor];
-        [self.delete addTarget:self action:@selector(afterDeleteTaped:) forControlEvents:UIControlEventTouchUpInside];
+        [self.delete addTarget:self action:@selector(afterDeleteTaped:) forControlEvents:UIControlEventTouchDown];
+//        [self.delete addTarget:self action:@selector(afterDeleteTaped:) forControlEvents:UIControlEventTouchUpInside];
         
         [self addSubview:self.viewPhoto];
         [self addSubview:self.viewMask];
@@ -67,7 +68,11 @@
 {
     _type = type;
     if (_type == PhotoType_Add) {
-        self.viewPhoto.image = [UIImage imageNamed:@"addPhoto"];
+        
+        UIImage *tmpImage = [UIImage imageNamed:@"ty_addPhoto@2x.png"];
+//        NSLog(@"PhotoType_Add, is nil:%d ",self.viewPhoto == nil);
+//        NSLog(@"Self frame:%@ is Hidden:%d",NSStringFromCGRect(self.frame), self.hidden == YES);
+        self.viewPhoto.image = tmpImage;
     }
 }
 
@@ -122,13 +127,35 @@
     [self.delegate afterDeleteTaped:self];
 }
 #pragma mark - gesture handler
-- (void)tapPress:(id)sender
+- (void)tapPress:(UITapGestureRecognizer*)tapGesture
 {
-    if ([self.delegate respondsToSelector:@selector(photoTaped:)]) {
-        [self.delegate photoTaped:self];
+    NSLog(@"Tap Press");
+    if (tapGesture.state == UIGestureRecognizerStateEnded) {
+        CGPoint inDelete = [tapGesture locationInView:self.delete];
+        if ([self judgePointInDelete:inDelete]) {
+            [self afterDeleteTaped:nil];
+        } else
+        {
+            if ([self.delegate respondsToSelector:@selector(photoTaped:)]) {
+                [self.delegate photoTaped:self];
+            }
+        }
+    
     }
+    
 }
 
+- (BOOL)judgePointInDelete:(CGPoint)p
+{
+    BOOL result = YES;
+    if (p.x < 0 ||
+        p.y < 0 ||
+        p.x > kDeleteSize ||
+        p.y > kDeleteSize) {
+        result = NO;
+    }
+    return result;
+}
 - (void)handleLongPress:(id)sender
 {
     UILongPressGestureRecognizer *recognizer = sender;

@@ -16,7 +16,7 @@
 - (void)photoWallMovePhotoFromIndex:(NSInteger)index toIndex:(NSInteger)newIndex photoWall:(TYPhotoWall*)wall;
 - (void)photoWallAddAction:(TYPhotoWall*)wall;//needs to add photo
 - (void)photoWallAddFinish:(TYPhotoWall*)wall;
-- (void)photoWallDeleteFinish:(TYPhotoWall*)wall;
+- (void)photoWallDeleteFinishIndex:(NSUInteger)index photoWall:(TYPhotoWall*)wall;
 
 @end
 

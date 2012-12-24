@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TYViewController : UIViewController <UIScrollViewDelegate>
+#import "TYPhotoWall.h"
+
+@interface TYViewController : UIViewController <UIScrollViewDelegate, TYPhotoWallDelegate>
 
 @property (nonatomic, strong) IBOutlet UIScrollView * scrollView;
 

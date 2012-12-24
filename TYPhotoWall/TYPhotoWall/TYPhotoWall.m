@@ -12,7 +12,6 @@
 #import "TYPhotoSize.h"
 @interface TYPhotoWall() 
 
-@property (strong, nonatomic) NSMutableArray *arrayPositions;
 @property (strong, nonatomic) NSMutableArray *arrayPhotos;
 @property (nonatomic) BOOL isEditMode;
 
@@ -30,8 +29,8 @@
     self = [super initWithFrame:CGRectMake(0, 0, 320, 0)];
     if (self) {
         self.backgroundColor = [UIColor darkGrayColor];
-        self.arrayPositions = [[NSMutableArray alloc] init];
         self.arrayPhotos = [NSMutableArray arrayWithCapacity:1];
+        [self setPhotos:nil];
     }
     
     return self;
@@ -40,7 +39,15 @@
 - (void)setPhotos:(NSArray*)photos
 {
     [self.arrayPhotos removeAllObjects];
-    NSUInteger count = [photos count];
+    
+    NSUInteger count;
+    if (photos != nil) {
+        count = [photos count];
+    } else
+    {
+        count = 0;
+    }
+    
     for (int i=0; i<count; i++) {
         /*
         NSDictionary *dictionaryTemp = [self.arrayPositions objectAtIndex:i];
@@ -60,15 +67,15 @@
 
     TYPhoto *photoTemp = [[TYPhoto alloc] initWithOrigin:addPhotoOrigin];
     photoTemp.delegate = self;
-    photoTemp.hidden = YES;
+//    photoTemp.hidden = YES;
     [photoTemp setPhotoType:PhotoType_Add];
     [self.arrayPhotos addObject:photoTemp];
     [self addSubview:photoTemp];
     
     //take 'add photo' into consideration
-//    count++;
-    CGFloat frameHeight = kVerticalSpace + (kVerticalSpace+kPhotoSize) * ceil(count/4);
-    
+    count++;
+    NSInteger row = ceil(count/4.0);
+    CGFloat frameHeight = kVerticalSpace + (kVerticalSpace+kPhotoSize) * row;
     self.frame = CGRectMake(0., 0., 320., frameHeight);
 }
 
@@ -76,7 +83,7 @@
 - (CGPoint)getOriginByIndex:(NSUInteger)index
 {
     CGFloat originX = kHorizonalSpace + (index%4)*(kHorizonalSpace+kPhotoSize);
-    CGFloat originY = kVerticalSpace + floor(index/4)*(kVerticalSpace+kPhotoSize);
+    CGFloat originY = kVerticalSpace + floor(index/4.0)*(kVerticalSpace+kPhotoSize);
     
     return CGPointMake(originX, originY);
 }
@@ -102,10 +109,12 @@
     photoTemp.delegate = self;
     photoTemp.index = index;
     [photoTemp setPhoto:img];
+    [photoTemp setEditMode:self.isEditMode];
     
     [self.arrayPhotos insertObject:photoTemp atIndex:index];
     [self addSubview:photoTemp];
     [self reloadPhotos:YES];
+    [self.delegate photoWallAddFinish:self];
 }
 
 - (void)deletePhotoByIndex:(NSUInteger)index
@@ -118,6 +127,7 @@
         p.index = iter;
     }
     [self reloadPhotos:YES];
+    [self.delegate photoWallDeleteFinishIndex:index photoWall:self];
 }
 
 #pragma mark - TYPhotoDelegate
@@ -196,7 +206,7 @@
     
 
     NSUInteger countPhoto = [self.arrayPhotos count];
-    CGFloat frameHeight = kVerticalSpace + (kVerticalSpace+kPhotoSize) * ceil(countPhoto/4);
+    CGFloat frameHeight = kVerticalSpace + (kVerticalSpace+kPhotoSize) * ceil(countPhoto/4.0);
     self.frame = CGRectMake(0., 0., 320., frameHeight);
 }
 
