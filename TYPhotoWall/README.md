@@ -11,7 +11,7 @@ It supports:
 
 Here is how it looks like:
 
-![TYPhotoWall Example](https://github.com/tanin47/UIGridView/raw/master/uigridview_example.png)
+![TYPhotoWall Example](https://github.com/Tony091250147/TYPhotoWall/blob/master/TYPhotoWall/default_picture.png)
 
 
 How to use it
